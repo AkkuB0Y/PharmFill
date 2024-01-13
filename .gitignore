@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# backend
+venv/
+
 # Expo
 .expo/
 dist/
