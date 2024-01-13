@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 
 from routes.scan import scan  # Importing the Blueprint
+from routes.auth import auth
 
 
 app = Flask(__name__)
