@@ -21,6 +21,11 @@ auth = Blueprint('auth', __name__)
 
 Session(app)
 
+@auth.route('/hi', methods=['GET'])
+def hi():
+    return jsonify({'message': 'Hi'})
+
+
 @auth.route('/create', methods=['POST'])
 def create():
     data = request.get_json()
