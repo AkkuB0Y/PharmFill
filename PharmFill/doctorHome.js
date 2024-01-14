@@ -23,18 +23,17 @@ const DoctorHome = () => {
       <Text style={styles.doctorName}>Dr. Ashvin Sivanesan</Text>
       <Text style={styles.doctorInfo}>1455 Oxford Dr, Unit 14, Hamilton, ON</Text>
 
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Search for your patient..."
-      />
+      <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+      <Text style={styles.searchInput}> Search for your patient...</Text>
+      </TouchableOpacity>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>recent patients</Text>
+          <Text style={styles.buttonText}>Recent Patients</Text>
         </TouchableOpacity>
         
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>prescription history</Text>
+          <Text style={styles.buttonText}>Prescription History</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -54,6 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     paddingTop: 50,
+    paddingBottom: 50,
     paddingHorizontal: 16, 
     backgroundColor: '#40B4EA',
   },
@@ -85,15 +85,20 @@ const styles = StyleSheet.create({
     color: 'grey',
     marginBottom: 20, 
   },
+  searchContainer: {
+    width: "50%",
+  },
   searchInput: {
-    height: 40,
-    width: '90%',
-    marginVertical: 20,
-    borderWidth: 1,
+    height: 50,
+    width: '100%',
+    marginVertical: 10,
+    borderWidth: 2,
     borderColor: 'lightgrey',
     borderRadius: 20,
-    paddingLeft: 20,
+    paddingTop: 10,
+    padding: 20,
     fontSize: 16,
+    textAlign: 'center',
   },
   buttonContainer: {
     flexDirection: 'row',
