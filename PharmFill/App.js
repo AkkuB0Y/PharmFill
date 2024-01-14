@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as Font from 'expo-font';
+import { ActivityIndicator, View } from 'react-native';
+
 import LoginScreen from './loginScreen';
 import RegisterScreen from './registerScreen';
 import UserHome from './userHome';
@@ -10,6 +13,26 @@ import CameraScreen from './cameraScreen';
 const Stack = createNativeStackNavigator();
 
 function App() {
+  const [fontsLoaded, setFontsLoaded] = React.useState(false);
+
+  async function loadFonts() {
+    await Font.loadAsync({
+      'anticon': require('@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/AntDesign.ttf'),
+      // Include any other fonts you need to load
+    });
+    setFontsLoaded(true);
+  }
+
+  React.useEffect(() => {
+    loadFonts();
+  }, []);
+
+  if (!fontsLoaded) {
+    return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <ActivityIndicator />
+    </View>;
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -12,26 +12,87 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import { Dropdown } from 'react-native-element-dropdown';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
+const data = [
+  { label: 'Pharmacist', value: 'PharmacistHome' },
+  { label: 'Physician', value: 'DoctorHome' },
+  { label: 'Patient', value: 'UserHome' },
+];
+
+const DropdownComponent = ({ onValueChange, selectedValue }) => {
+  const [value, setValue] = useState(selectedValue);
+  const [isFocus, setIsFocus] = useState(false);
+
+  useEffect(() => {
+    setValue(selectedValue);
+  }, [selectedValue]);
+
+  const renderLabel = () => {
+    if (value || isFocus) {
+      return (
+        <Text style={[styles.label, isFocus && { color: 'blue' }, { textAlign: `center` }]}>
+          User
+        </Text>
+      );
+    }
+    return null;
+  }
+
+  return (
+    <View style={styles.container}>
+      {renderLabel()}
+      <Dropdown
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        iconStyle={styles.iconStyle}
+        data={data}
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        placeholder="Select user"
+        value={selectedValue}
+        onChange={item => {
+          onValueChange(item.value);
+        }}
+        renderLeftIcon={() => (
+          <AntDesign style={styles.icon} color="black" name="Safety" size={20} />
+        )}
+      />
+    </View>
+  );
+};
 export default function LoginScreen() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+
   const navigation = useNavigation();
 
   const handleLoginPress = async () => {
-    try {
-      const response = await axios.post('http://172.17.72.156:5001/auth/login', {
-        "username": username,
-        "password": password
-      });
-      if (response.data.message === 'Login successful') {
-        console.log('Logged in:', response.data.username);
-      } else {
-        console.warn(response.data.message);
-      }
-    } catch (error) {
-      console.error('Login error:', error);
+    // try {
+    //   const response = await axios.post('http://172.17.72.156:5001/auth/login', {
+    //     "username": username,
+    //     "password": password
+    //   });
+    //   if (response.data.message === 'Login successful') {
+    //     console.log('Logged in:', response.data.username);
+    //   } else {
+    //     console.warn(response.data.message);
+    //   }
+    // } catch (error) {
+    //   console.error('Login error:', error);
+    // }
+    if (selectedUser === 'PharmacistHome') {
+      navigation.navigate("PharmacistHome"); // Modify with your actual route name
+    } else if (selectedUser === 'DoctorHome') {
+      navigation.navigate("DoctorHome"); // Modify with your actual route name
+    } else if (selectedUser === 'UserHome') {
+      navigation.navigate("UserHome"); // Modify with your actual route name
     }
   };
 
@@ -111,6 +172,8 @@ export default function LoginScreen() {
         </View>
       </Modal>
 
+      <DropdownComponent onValueChange={setSelectedUser} selectedValue={selectedUser} />
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -130,7 +193,7 @@ export default function LoginScreen() {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate("DoctorHome")}>
+          onPress={() => handleLoginPress()}>
           <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
 
@@ -269,5 +332,30 @@ const styles = StyleSheet.create({
   modalIconText: {
     fontSize: 16,
     color: '#40B4EA',
+    padding: `auto`
+  },   
+  dropdown: {
+    margin: 16,
+    height: 50,
+    width: 170,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.5,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
   },
 });
