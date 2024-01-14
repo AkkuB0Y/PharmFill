@@ -56,8 +56,8 @@ def logout():
 
     return jsonify({'message': 'Logged out successfully'})
 
-@auth.route('/createProfile', methods=['POST'])
-def editProfile(): 
+@auth.route('/editUserProfile', methods=['POST'])
+def editUserProfile(): 
     if 'user' not in session:
         return jsonify({'message': 'User not logged in'}), 401
 
@@ -80,6 +80,41 @@ def editProfile():
     r.hmset(f"{session['user']}:info", user_info)
 
     return "User profile successfully changed"
+
+@auth.route('/editDoctorProfile', methods=['POST'])
+def editDoctorProfile(): 
+    if 'user' not in session:
+        return jsonify({'message': 'User not logged in'}), 401
+    
+    name = request.form['name']
+
+    doctor_info = {
+        'name': name
+    }
+
+    r.hmset(f"{session['user']}:info", doctor_info)
+
+    return "Doctor profile successfully changed"
+
+@auth.route('/editPharmacyProfile', methods=['POST'])
+def editPharmacyProfile(): 
+    if 'user' not in session:
+        return jsonify({'message': 'User not logged in'}), 401
+    
+    name = request.form['name']
+    phoneNumber = request.form['phone number']
+    address = request.form['address']
+
+    pharmacy_info = {
+        'name': name,
+        'phone number': phoneNumber,
+        'address': address
+    }
+
+    r.hmset(f"{session['user']}:info", pharmacy_info)
+
+    return "Doctor profile successfully changed"
+
 
 if __name__ == '__main__':
     app.run(debug=True)
