@@ -5,6 +5,7 @@ from routes.scan import scan  # Importing the Blueprint
 from routes.auth import auth
 from routes.image import image
 from routes.annotate import annotate
+from routes.search import search
 
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ app.register_blueprint(scan, url_prefix='/scan')  # Registering the Blueprint
 app.register_blueprint(auth, url_prefix='/login')
 app.register_blueprint(image, url_prefix='/image')
 app.register_blueprint(annotate, url_prefix='/annotate')
+app.register_blueprint(search, url_prefix='/search')
 
 @app.route('/')
 def hello_world():
