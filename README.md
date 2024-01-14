@@ -33,7 +33,7 @@ The PharmFill project is a revolutionary mobile application designed to moderniz
 
 
 ## Architecture Overview
-![Architecture](https://github.com/AkkuB0Y/PharmFill/tree/main/PharmFill/assets/architecture.png)
+![Architecture](https://github.com/AkkuB0Y/PharmFill/blob/main/PharmFill/assets/architecture.png)
 
 ## Form filling process:
 - Read form
