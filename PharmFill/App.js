@@ -5,6 +5,7 @@ import LoginScreen from './loginScreen';
 import RegisterScreen from './registerScreen';
 import UserHome from './userHome';
 import DoctorHome from './doctorHome';
+import CameraScreen from './cameraScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ function App() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="UserHome" component={UserHome} />
         <Stack.Screen name="DoctorHome" component={DoctorHome} />
+        <Stack.Screen name="Camera" component={CameraScreen} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
