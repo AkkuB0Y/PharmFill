@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint, request, jsonify, session
 from flask_session import Session
 from openai import OpenAI
+import os
 
 text = [{"text": "Doctor Name", 'x': 0, 'y': 0, "ans": "abc"}, {"text": "Patient Name", 'x': 0, 'y': 0, "ans": "abc"}]
 
@@ -13,7 +14,7 @@ def construct_prompt(text, doctorInfo, pharmacyInfo, patientInfo):
     return prompt
 
 def generate_answers():
-    client = OpenAI(api_key = "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")
+    client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
 
     for item in text:
         prompt = construct_prompt(item['text'], doctorInfo, pharmacyInfo, patientInfo)

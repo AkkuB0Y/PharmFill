@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Image, KeyboardAvoidingView, ScrollView, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, KeyboardAvoidingView, ScrollView, Modal, TouchableOpacity, Button, Alert } from 'react-native';
 import { styled } from 'nativewind';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 // styling
 const ViewStyled = styled(View)
@@ -48,7 +49,7 @@ export default function App() {
           </ViewStyled>
 
           <ViewStyled className="mt-1 py-3 w-full bg-[#40B4EA] items-center">
-            <InputStyled className="px-5 py-3 w-3/4 rounded-full bg-white text-zinc-500" defaultValue="Enter here..."/>
+            <InputStyled className="px-5 py-3 w-3/4 rounded-full bg-white text-zinc-500" placeholder="Enter here..."/>
           </ViewStyled>
 
           <ViewStyled className="flex flex-row justify-between">
@@ -57,7 +58,7 @@ export default function App() {
             </Text>
           </ViewStyled>
           <ViewStyled className="mt-1 py-3 w-full bg-[#40B4EA] items-center">
-            <InputStyled className="px-5 py-3 w-3/4 rounded-full bg-white text-zinc-500" defaultValue="Enter here..."/>
+            <InputStyled className="px-5 py-3 w-3/4 rounded-full bg-white text-zinc-500" placeholder="Enter here..."/>
           </ViewStyled>
           <Text className="mt-2 ml-[13%] underline">
             Don't have an account? Register Here!
