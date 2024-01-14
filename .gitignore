@@ -6,6 +6,10 @@ node_modules/
 # backend
 venv/
 
+# environment variables
+.env
+GACKey.json
+
 # Expo
 .expo/
 dist/
