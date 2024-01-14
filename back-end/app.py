@@ -9,7 +9,7 @@ from routes.search import search
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Allow only specific origin
+CORS(app, resources={r"/*": {"origins": "*"}})  # Allow only specific origin
 
 app.register_blueprint(scan, url_prefix='/scan')  # Registering the Blueprint
 app.register_blueprint(auth, url_prefix='/login')
