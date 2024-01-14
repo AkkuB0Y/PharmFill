@@ -22,19 +22,15 @@ def create():
     username = request.form['username']
     password = request.form['password'].encode('utf-8')
 
+    if r.sismember('usernames', username):
+        return jsonify({'message': 'Username already exists'}), 409
+
     hashedPassword = bcrypt.hashpw(password, bcrypt.gensalt())
 
-    user_info = {
-        'age': 0,
-        'name': "John Doe",
-        'city': 'Toronto',
-        'province/state': 'Ontario',
-        'phone number': 000-000-0000,
-        'postal code': "A1A 1A1",
-    }
-
     r.set(username, hashedPassword.decode('utf-8'))
-    r.hmset(f"{username}:info", user_info)
+    session['user'] = username
+
+    r.sadd('usernames', username)
 
     return "User successfully created"
 
@@ -59,6 +55,28 @@ def logout():
     session.pop('user', None)
 
     return jsonify({'message': 'Logged out successfully'})
+
+@auth.route('/createProfile', methods=['POST'])
+def createProfile():
+    age = request.form['age']
+    name = request.form['name']
+    city = request.form['city']
+    province = request.form['province']
+    phoneNumber = request.form['phone number']
+    postalCode = request.form['postal code']
+
+    user_info = {
+        'age': age,
+        'name': name,
+        'city': city,
+        'province': province,
+        'phone number': phoneNumber,
+        'postal code': postalCode,
+    }
+
+    r.hmset(f"{session['user']}:info", user_info)
+
+    return "User successfully created"
 
 if __name__ == '__main__':
     app.run(debug=True)
