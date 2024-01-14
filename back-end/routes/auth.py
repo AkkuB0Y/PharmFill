@@ -69,12 +69,12 @@ def editUserProfile():
     postalCode = request.form['postal code']
 
     user_info = {
-        'age': age,
-        'name': name,
-        'city': city,
-        'province': province,
-        'phone number': phoneNumber,
-        'postal code': postalCode,
+        'patientAge': age,
+        'patientName': name,
+        'patientCity': city,
+        'patientProvince': province,
+        'patientPhone number': phoneNumber,
+        'patientPostalCode': postalCode,
     }
 
     r.hmset(f"{session['user']}:info", user_info)
@@ -89,7 +89,7 @@ def editDoctorProfile():
     name = request.form['name']
 
     doctor_info = {
-        'name': name
+        'doctorName': name
     }
 
     r.hmset(f"{session['user']}:info", doctor_info)
@@ -106,9 +106,9 @@ def editPharmacyProfile():
     address = request.form['address']
 
     pharmacy_info = {
-        'name': name,
-        'phone number': phoneNumber,
-        'address': address
+        'pharmacyName': name,
+        'pharmacyPhoneNumber': phoneNumber,
+        'pharmacyAddress': address
     }
 
     r.hmset(f"{session['user']}:info", pharmacy_info)

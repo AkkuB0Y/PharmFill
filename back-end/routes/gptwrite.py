@@ -2,11 +2,11 @@ from flask import Flask, Blueprint, request, jsonify, session
 from flask_session import Session
 from openai import OpenAI
 
-text = [{"text": "Doctor Name", 'x': 0, 'y': 0, "ans": "abc"}, {"Text": "Patient Name", 'x': 0, 'y': 0, "ans": "abc"}]
+text = [{"text": "Doctor Name", 'x': 0, 'y': 0, "ans": "abc"}, {"text": "Patient Name", 'x': 0, 'y': 0, "ans": "abc"}]
 
-doctorInfo = {"name": "Dr. Stirling"}
-pharmacyInfo = {"name": "Ri Hong"}
-patientInfo = {"name": "Akshay Satish"}
+doctorInfo = {"doctorName": "Dr. Stirling"}
+pharmacyInfo = {"pharmacyName": "Ri Hong"}
+patientInfo = {"patientName": "Akshay Satish"}
 
 def construct_prompt(text, doctorInfo, pharmacyInfo, patientInfo):
     prompt = f"Based on the following information; {doctorInfo}, {pharmacyInfo}, {patientInfo}, what is the best answer for {text}"
