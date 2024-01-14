@@ -35,7 +35,7 @@ def upload_image():
         
 
 @image.route('/sayhi', methods=['POST'])
-def getURL():
+def sayhi():
     return jsonify({'message': 'Hello'})
 
 
