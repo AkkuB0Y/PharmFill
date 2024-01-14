@@ -19,8 +19,6 @@ def debounce(wait):
 
     return decorator
 
-search = Flask(__name__)
-
 search = Blueprint('search', __name__)
 
 r = redis.Redis(
@@ -28,7 +26,7 @@ r = redis.Redis(
   port=19982,
   password='4pjeX1Xg4W38pdG4tW86hxv8QQmNtVLg')
 
-@search.route('/findPatient', __name__)
+@search.route('/findPatient', methods=['GET'])
 @debounce(0.5) 
 def findPatient():
     query = request.args.get('query','').lower()

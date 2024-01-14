@@ -3,6 +3,9 @@ from flask_session import Session
 from openai import OpenAI
 import os
 
+from dotenv import load_dotenv
+load_dotenv()  # This loads the variables from .env into the environment
+
 text = [
     {
       "ans": "",
@@ -87,7 +90,8 @@ def construct_prompt(text, doctorInfo, pharmacyInfo, patientInfo):
     return prompt
 
 def generate_answers():
-    client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
+    API_KEY = os.getenv('OPENAI_API_KEY')
+    client = OpenAI(api_key=API_KEY)
 
     for item in text:
         prompt = construct_prompt(item["text"], doctorInfo, pharmacyInfo, patientInfo)

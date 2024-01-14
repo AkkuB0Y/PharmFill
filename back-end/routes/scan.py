@@ -49,7 +49,7 @@ def convert_text():
     response = model.generate_content(
         [
             image,
-            "What is the prescription?"
+            "Tell me what's written in this prescription."
         ]
     )
     print(response)
