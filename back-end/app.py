@@ -3,6 +3,7 @@ from flask_cors import CORS
 
 from routes.scan import scan  # Importing the Blueprint
 from routes.auth import auth
+from routes.image import image
 from routes.annotate import annotate
 
 
@@ -11,6 +12,7 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Allow only
 
 app.register_blueprint(scan, url_prefix='/scan')  # Registering the Blueprint
 app.register_blueprint(auth, url_prefix='/login')
+app.register_blueprint(image, url_prefix='/image')
 app.register_blueprint(annotate, url_prefix='/annotate')
 
 @app.route('/')
