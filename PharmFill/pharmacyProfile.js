@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, FlatList, TouchableOpacity, Image, StatusBar } 
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
-const DoctorProfile = () => {
+const PharmacyProfile = () => {
     const prescriptions = [
         { name: 'Amoxicillin', dosage: '500 mg', color: 'gold' },
         { name: 'Lisinopril', dosage: '10 mg', color: 'red' },

@@ -42,6 +42,9 @@ function App() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="UserHome" component={UserHome} />
         <Stack.Screen name="DoctorHome" component={DoctorHome} />
+        <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen name="DoctorProfil" component={DoctorProfile} />
+        <Stack.Screen name="PharmacyProfile" component={PharmacyProfile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
