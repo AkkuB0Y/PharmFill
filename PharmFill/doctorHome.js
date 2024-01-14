@@ -23,7 +23,7 @@ const DoctorHome = () => {
       <Text style={styles.doctorName}>Rexall Pharmacy</Text>
       <Text style={styles.doctorInfo}>2 King Street West, Unit 18. Hamilton, ON</Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Search")}>
+      <TouchableOpacity onPress={() => navigation.navigate("DoctorSearch")}>
       <Text style={styles.searchInput}> Search for your patient...</Text>
       </TouchableOpacity>
 

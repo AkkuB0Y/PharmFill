@@ -8,10 +8,16 @@ import LoginScreen from './loginScreen';
 import RegisterScreen from './registerScreen';
 import UserHome from './userHome';
 import DoctorHome from './doctorHome';
-import PharmacyHome from './pharmacyHome';
-import Search from './search';
+import PharmacistHome from './PharmacistHome';
+import DoctorSearch from './DoctorSearch';
+import PharmacistSearch from './PharmacistSearch';
 import DoctorProfile from './doctorProfile';
 import PharmacyProfile from './pharmacyProfile';
+import DoctorCameraScreen from './DoctorCameraScreen';
+import DoctorConfirmation from './DoctorConfirmation';
+import PharmacistCameraScreen from './PharmacistCameraScreen';
+import PharmacistConfirmation from './PharmacistConfirmation';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -43,10 +49,17 @@ function App() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="UserHome" component={UserHome} />
         <Stack.Screen name="DoctorHome" component={DoctorHome} />
-        <Stack.Screen name="PharmacyHome" component={PharmacyHome} />
-        <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen name="PharmacistHome" component={PharmacistHome} />
+        <Stack.Screen name="PharmacistSearch" component={PharmacistSearch} />
+        <Stack.Screen name="DoctorSearch" component={DoctorSearch} />
         <Stack.Screen name="DoctorProfile" component={DoctorProfile} />
         <Stack.Screen name="PharmacyProfile" component={PharmacyProfile} />
+        <Stack.Screen name="DoctorCameraScreen" component={DoctorCameraScreen} />
+        <Stack.Screen name="DoctorConfirmation" component={DoctorConfirmation} />
+        <Stack.Screen name="PharmacistCameraScreen" component={PharmacistCameraScreen} />
+        <Stack.Screen name="PharmacistConfirmation" component={PharmacistConfirmation} />
+
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

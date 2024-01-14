@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput, Image, FlatList, TouchableOpacity, S
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
-const Search = () => {
+const DoctorSearch = () => {
   const navigation = useNavigation();
   const patients = [
     { id: '1', initials: 'DK', name: 'Kansara, Dev'},
@@ -119,4 +119,4 @@ container: {
   },
 });
     
-export default Search;
+export default DoctorSearch;

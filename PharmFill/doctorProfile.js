@@ -43,7 +43,7 @@ const DoctorProfile = () => {
       <Text style={styles.sectionHeader}>Closed Prescriptions</Text>
     
 
-      <TouchableOpacity style={styles.addButton}>
+      <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate("DoctorCameraScreen")}>
         <Text style={styles.addSign}>+</Text>
       </TouchableOpacity>
       </View>

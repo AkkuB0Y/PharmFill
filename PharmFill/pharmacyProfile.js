@@ -44,6 +44,9 @@ const PharmacyProfile = () => {
       ))}
 
       <Text style={styles.sectionHeader}>Closed Prescriptions</Text>
+      <TouchableOpacity style={styles.addButton} onPress={() => navigation.navigate("PharmacistCameraScreen")}>
+        <Text style={styles.addSign}>+</Text>
+      </TouchableOpacity>
       </View>
     );
     };
@@ -139,6 +142,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 30, 
   },
+  addButton: {
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: '#40B4EA',
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4, 
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    },
+  addSign: {
+    color: "#FFFFFF",
+    fontSize: 30,
+  }
 });
 
 export default PharmacyProfile;
