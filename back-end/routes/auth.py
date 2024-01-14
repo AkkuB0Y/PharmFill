@@ -1,17 +1,21 @@
 from flask import Flask, Blueprint, request, jsonify, session
 from flask_session import Session
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.getenv('SECRET_KEY')
 
 import redis
 import bcrypt
+
 
 r = redis.Redis(
   host='redis-19982.c259.us-central1-2.gce.cloud.redislabs.com',
   port=19982,
   password='4pjeX1Xg4W38pdG4tW86hxv8QQmNtVLg')
+
 
 auth = Blueprint('auth', __name__)
 
@@ -19,8 +23,9 @@ Session(app)
 
 @auth.route('/create', methods=['POST'])
 def create():
-    username = request.form['username']
-    password = request.form['password'].encode('utf-8')
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password').encode('utf-8')
 
     if r.sismember('usernames', username):
         return jsonify({'message': 'Username already exists'}), 409

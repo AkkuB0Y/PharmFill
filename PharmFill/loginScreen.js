@@ -21,9 +21,9 @@ export default function LoginScreen() {
 
   const handleLoginPress = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/auth/login', {
-        username,
-        password,
+      const response = await axios.post('http://172.17.72.156:5001/auth/login', {
+        "username": username,
+        "password": password
       });
       if (response.data.message === 'Login successful') {
         console.log('Logged in:', response.data.username);
@@ -37,9 +37,9 @@ export default function LoginScreen() {
 
   const handleRegisterPress = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:5000/auth/create', {
-        username,
-        password,
+      const response = await axios.post('http://172.17.72.156:5001/auth/create', {
+        "username": "username",
+        "password": "password"
       });
       if (response.data === 'User successfully created') {
         navigation.navigate('Register');
@@ -130,13 +130,13 @@ export default function LoginScreen() {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={handleLoginPress}>
+          onPress={() => navigation.navigate("DoctorHome")}>
           <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={handleRegisterPress}>
+          onPress={() => navigation.navigate("Register")}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </ScrollView>

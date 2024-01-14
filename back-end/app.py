@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})  # Allow only specific origin
 
 app.register_blueprint(scan, url_prefix='/scan')  # Registering the Blueprint
-app.register_blueprint(auth, url_prefix='/login')
+app.register_blueprint(auth, url_prefix='/auth')
 app.register_blueprint(image, url_prefix='/image')
 app.register_blueprint(annotate, url_prefix='/annotate')
 app.register_blueprint(search, url_prefix='/search')
