@@ -24,7 +24,17 @@ def create():
 
     hashedPassword = bcrypt.hashpw(password, bcrypt.gensalt())
 
+    user_info = {
+        'age': 0,
+        'name': "John Doe",
+        'city': 'Toronto',
+        'province/state': 'Ontario',
+        'phone number': 000-000-0000,
+        'postal code': "A1A 1A1",
+    }
+
     r.set(username, hashedPassword.decode('utf-8'))
+    r.hmset(f"{username}:info", user_info)
 
     return "User successfully created"
 
