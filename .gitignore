@@ -41,3 +41,5 @@ GACKey.json
 
 # typescript
 *.tsbuildinfo
+
+__pycache__/
