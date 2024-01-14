@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'reac
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
-const DoctorHome = () => {
+const PharmacyHome = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -21,7 +21,7 @@ const DoctorHome = () => {
       />
       
       <Text style={styles.doctorName}>Rexall Pharmacy</Text>
-      <Text style={styles.doctorInfo}>2 King Street West, Unit 18. Hamilton, ON</Text>
+      <Text style={styles.doctorInfo}>1455 Oxford Dr, Unit 14, Hamilton, ON</Text>
 
       <TouchableOpacity onPress={() => navigation.navigate("Search")}>
       <Text style={styles.searchInput}> Search for your patient...</Text>
@@ -120,4 +120,4 @@ const styles = StyleSheet.create({
   },
   });
 
-export default DoctorHome;
+export default PharmacyHome;

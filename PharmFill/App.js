@@ -8,6 +8,7 @@ import LoginScreen from './loginScreen';
 import RegisterScreen from './registerScreen';
 import UserHome from './userHome';
 import DoctorHome from './doctorHome';
+import PharmacyHome from './pharmacyHome';
 import Search from './search';
 import DoctorProfile from './doctorProfile';
 import PharmacyProfile from './pharmacyProfile';
@@ -42,8 +43,9 @@ function App() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="UserHome" component={UserHome} />
         <Stack.Screen name="DoctorHome" component={DoctorHome} />
+        <Stack.Screen name="PharmacyHome" component={PharmacyHome} />
         <Stack.Screen name="Search" component={Search} />
-        <Stack.Screen name="DoctorProfil" component={DoctorProfile} />
+        <Stack.Screen name="DoctorProfile" component={DoctorProfile} />
         <Stack.Screen name="PharmacyProfile" component={PharmacyProfile} />
       </Stack.Navigator>
     </NavigationContainer>
