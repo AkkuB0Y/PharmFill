@@ -57,7 +57,10 @@ def logout():
     return jsonify({'message': 'Logged out successfully'})
 
 @auth.route('/createProfile', methods=['POST'])
-def createProfile():
+def editProfile(): 
+    if 'user' not in session:
+        return jsonify({'message': 'User not logged in'}), 401
+
     age = request.form['age']
     name = request.form['name']
     city = request.form['city']
@@ -76,7 +79,7 @@ def createProfile():
 
     r.hmset(f"{session['user']}:info", user_info)
 
-    return "User successfully created"
+    return "User profile successfully changed"
 
 if __name__ == '__main__':
     app.run(debug=True)
